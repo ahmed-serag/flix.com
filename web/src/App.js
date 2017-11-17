@@ -18,7 +18,7 @@ class App extends Component {
         console.log(movies)
         return movies
       }));
-    this.setState(movies);
+    
     return (
       <div className="App">
         <header className="App-header">
@@ -26,7 +26,7 @@ class App extends Component {
           <h1 className="App-title">Welcome to React</h1>
         </header>
         <p className="App-intro">
-          {movies}
+      
         </p>
       </div>
     );
