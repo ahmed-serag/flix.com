@@ -3,11 +3,14 @@ import logo from './logo.svg';
 import './App.css';
 
 class App extends Component {
-
-
-  render() {
-    const movies  = fetch('http://localhost:8080/api/movies', {
+  constructor(){
+    super();
+    this.state = {movies: []}
+  }
+  componentWillMount(){
+    fetch('http://localhost:8080/api/movies', {
       method: 'GET',
+      mode: "cors", 
       headers: {
         'Accept': 'application/json',
         'Content-Type': 'application/json',
@@ -15,22 +18,26 @@ class App extends Component {
     })
       .then((response) => response.json())
       .then((movies => {
-        console.log(movies)
-        return movies
+        this.setState({movies}) 
       }));
-    
+  }
+  render() {
+    let movies = this.state.movies
     return (
       <div className="App">
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
+          <h1 className="App-title">Welcome to Flix Movies</h1>
         </header>
-        <p className="App-intro">
-      
-        </p>
+        <ul>
+        {movies.map(item => 
+              <Movie key={item.name} movie={item} />)}
+        </ul>
       </div>
     );
   }
 }
+
+const Movie = (props) => <h4>{props.movie.name}</h4>
 
 export default App;

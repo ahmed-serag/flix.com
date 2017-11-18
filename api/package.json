@@ -1,8 +1,11 @@
 {
-    "name": "flix-api",
-    "main": "server.js",
-    "dependencies": {
-        "express": "~4.0.0",
-        "mongoose": "~3.6.13"
-    }
+  "name": "flix-api",
+  "main": "server.js",
+  "dependencies": {
+    "express": "~4.0.0",
+    "mongoose": "~3.6.13"
+  },
+  "devDependencies": {
+    "webpack-dev-server": "^2.9.4"
+  }
 }
